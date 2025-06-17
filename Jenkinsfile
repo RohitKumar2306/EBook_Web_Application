@@ -12,7 +12,7 @@ pipeline {
         steps {
             script {
                 sh 'mvn clean package -DskipTests=true'
-                dir("webapp/target/"){
+                dir("target/"){
                     stash includes: "*.war", name: 'maven-build'
                 }
             }
