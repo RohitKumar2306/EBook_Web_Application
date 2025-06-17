@@ -1,8 +1,8 @@
 pipeline {
   agent any
 
-  environment {
-    Name = "Rohit Kumar"
+  tools {
+    maven "Maven3"
   }
 
   stages {
