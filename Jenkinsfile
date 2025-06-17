@@ -11,12 +11,8 @@ pipeline {
     stage("Build the Application"){
         steps {
             script {
-                def version = new Date().format("yyyyMMdd-HHmm")
-                echo "Version: ${version}"
                 sh 'mvn clean package -DskipTests=true'
-                sh "pwd"
                 dir("webapp/target/"){
-                    sh "pwd"
                     stash includes: "*.war", name: 'maven-build'
                 }
             }
@@ -27,21 +23,9 @@ pipeline {
             }
         }
     }
-
-    stage("Testing the Application") {
-        parallel {
-            stage("Testing in DEV Environment") {
-                steps {
-                    sh 'mvn test'
-                }
-            }
-        }
-    }
-
     stage("Deploy into DEV Server") {
-
         steps {
-            dir("/var/www/html") {
+            dir("/Oracle/Middleware/Oracle_Home/user_projects/domains/base_domain/autodeploy") {
                 script {
                     try {
                         unstash 'maven-build'
@@ -51,10 +35,6 @@ pipeline {
                     }
                 }
             }
-            sh """
-            cd /var/www/html/
-            jar -xvf webapp.war
-            """
         }
     }
   }
