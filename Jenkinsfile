@@ -25,14 +25,12 @@ pipeline {
     }
     stage("Deploy into DEV Server") {
         steps {
-            dir("/home/rohitkumar/") {
-                script {
-                    try {
-                        unstash 'maven-build'
-                    } catch (Exception e) {
-                        echo "Failed to unstash: ${e.getMessage()}"
-                        throw e
-                    }
+            script {
+                try {
+                    unstash 'maven-build'
+                } catch (Exception e) {
+                    echo "Failed to unstash: ${e.getMessage()}"
+                    throw e
                 }
             }
         }
