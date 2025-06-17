@@ -25,7 +25,7 @@ pipeline {
     }
     stage("Deploy into DEV Server") {
         steps {
-            dir("/Oracle/Middleware/Oracle_Home/user_projects/domains/base_domain/autodeploy") {
+            dir("/home/rohitkumar/") {
                 script {
                     try {
                         unstash 'maven-build'
