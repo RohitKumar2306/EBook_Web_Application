@@ -49,9 +49,9 @@ pipeline {
 
     stage("Deploy into DEV Server") {
         steps {
-            script {
-                sh 'chmod +x scripts/deploy_weblogic.sh && ./scripts/deploy_weblogic.sh'
-            }
+            withCredentials([string(credentialsId: 'jFrog_Credentials', variable: 'ACCESS_TOKEN')]) {
+                    sh 'chmod +x scripts/deploy_weblogic.sh && ACCESS_TOKEN=$ACCESS_TOKEN bash ./scripts/deploy_weblogic.sh'
+                }
         }
     }
   }
