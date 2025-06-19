@@ -45,11 +45,12 @@ pipeline {
             steps {
                 script {
                     def server = Artifactory.server(ARTIFACTORY_SERVER)
+                    sh 'ls -l target'
                     def uploadSpec = """{
                       "files": [
                         {
                           "pattern": "build/libs/*.war",
-                          "target": "libs-release-local/SimpleApp/"
+                          "target": "libs-release-local/my-app/"
                         }
                       ]
                     }"""
