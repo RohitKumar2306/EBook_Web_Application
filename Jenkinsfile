@@ -48,7 +48,7 @@ pipeline {
                     def uploadSpec = """{
                       "files": [
                         {
-                          "pattern": "build/libs/*.jar",
+                          "pattern": "build/libs/*.war",
                           "target": "libs-release-local/SimpleApp/"
                         }
                       ]
