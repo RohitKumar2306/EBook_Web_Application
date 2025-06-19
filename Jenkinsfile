@@ -5,6 +5,11 @@ pipeline {
     maven "Maven3"
   }
 
+  environment {
+        ARTIFACTORY_SERVER = 'jFrog_Artifactory'
+        ARTIFACTORY_CRED = credentials('jFrog_Credentials')
+    }
+
   stages {
 
 
@@ -34,6 +39,23 @@ pipeline {
                 }
             }
         }
+    }
+
+    stage('Upload to Artifactory') {
+            steps {
+                script {
+                    def server = Artifactory.server(ARTIFACTORY_SERVER)
+                    def uploadSpec = """{
+                      "files": [
+                        {
+                          "pattern": "build/libs/*.jar",
+                          "target": "libs-release-local/SimpleApp/"
+                        }
+                      ]
+                    }"""
+                    server.upload spec: uploadSpec
+                }
+            }
     }
   }
 }
