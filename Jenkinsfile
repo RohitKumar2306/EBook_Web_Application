@@ -50,7 +50,7 @@ pipeline {
     stage("Deploy into DEV Server") {
         steps {
             script {
-                sh "./scripts/deploy_weblogic.sh"
+                sh 'chmod +x scripts/deploy_weblogic.sh && ./scripts/deploy_weblogic.sh'
             }
         }
     }
