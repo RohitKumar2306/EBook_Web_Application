@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # === CONFIGURATION ===
-ARTIFACTORY_URL="http://<your-artifactory-host>/artifactory"
+ARTIFACTORY_URL="http://192.168.0.146:8082"
 REPO="libs-release-local"
 APP_PATH="my-app"
 VERSION="1.0.1"  # Or read from version.txt or passed as an argument
@@ -10,8 +10,8 @@ DOWNLOAD_PATH="/tmp/${FILENAME}"
 DEPLOY_DIR="/Oracle/Middleware/Oracle_Home/user_projects/domains/base_domain/autodeploy"
 
 # === AUTHENTICATION ===
-ARTIFACTORY_SERVER = 'jFrog_Artifactory'
-ARTIFACTORY_CRED = credentials('jFrog_Credentials')
+USERNAME = 'ciadmin'
+API_KEY = credentials('jFrog_Credentials')
 
 # === DOWNLOAD ARTIFACT ===
 echo "Downloading ${FILENAME} from Artifactory..."
