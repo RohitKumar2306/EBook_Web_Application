@@ -9,9 +9,10 @@ FILENAME="EbookWebsite-1.0-SNAPSHOT.war"
 DOWNLOAD_PATH="/tmp/${FILENAME}"
 DEPLOY_DIR="/Oracle/Middleware/Oracle_Home/user_projects/domains/base_domain/autodeploy"
 
+
 # === AUTHENTICATION ===
-USERNAME = 'ciadmin'
-API_KEY = credentials('jFrog_Credentials')
+USERNAME='ciadmin'
+API_KEY=credentials('jFrog_Credentials')
 
 # === DOWNLOAD ARTIFACT ===
 echo "Downloading ${FILENAME} from Artifactory..."
