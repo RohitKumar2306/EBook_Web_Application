@@ -28,18 +28,6 @@ pipeline {
             }
         }
     }
-    stage("Deploy into DEV Server") {
-        steps {
-            script {
-                try {
-                    unstash 'maven-build'
-                } catch (Exception e) {
-                    echo "Failed to unstash: ${e.getMessage()}"
-                    throw e
-                }
-            }
-        }
-    }
 
     stage('Upload to Artifactory') {
             steps {
@@ -50,13 +38,21 @@ pipeline {
                       "files": [
                         {
                           "pattern": "*.war",
-                          "target": "libs-release-local/my-app/1.0.1/"
+                          "target": "libs-release-local/my-app/1.0.2/"
                         }
                       ]
                     }"""
                     server.upload spec: uploadSpec
                 }
             }
+    }
+
+    stage("Deploy into DEV Server") {
+        steps {
+            script {
+                sh "./scripts/deploy_weblogic.sh"
+            }
+        }
     }
   }
 }
