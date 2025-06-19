@@ -50,7 +50,7 @@ pipeline {
                       "files": [
                         {
                           "pattern": "*.war",
-                          "target": "libs-release-local/my-app/"
+                          "target": "libs-release-local/my-app/1.0.1/"
                         }
                       ]
                     }"""
