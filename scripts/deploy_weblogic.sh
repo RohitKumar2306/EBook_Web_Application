@@ -23,7 +23,7 @@ fi
 
 # === DEPLOY TO WEBLOGIC ===
 echo "Deploying to WebLogic at ${DEPLOY_DIR}..."
-cp ${DOWNLOAD_PATH} ${DEPLOY_DIR}/
+cp ${DOWNLOAD_PATH} ${DEPLOY_DIR}
 
 if [ $? -eq 0 ]; then
     echo "✅ Deployment successful!"
