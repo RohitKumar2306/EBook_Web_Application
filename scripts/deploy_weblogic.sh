@@ -7,7 +7,7 @@ APP_PATH="my-app"
 VERSION="1.0.2"  # Or read from version.txt or passed as an argument
 FILENAME="EbookWebsite-1.0-SNAPSHOT.war"
 DOWNLOAD_PATH="/tmp/${FILENAME}"
-DEPLOY_DIR="/var/tmp"
+DEPLOY_DIR="/home/rohitkumar/Oracle/Middleware/Oracle_Home/user_projects/domains/base_domain/autodeploy"
 
 # === DOWNLOAD ARTIFACT ===
 echo "Downloading ${FILENAME} from Artifactory..."
